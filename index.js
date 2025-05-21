@@ -44,6 +44,21 @@ async function run() {
     })
 
 
+    app.get('/TopRecipes', async (req, res) => {
+      const topRecipes = await recipeCollection.find().sort({ like_count: -1 }).limit(6).toArray();
+      res.send(topRecipes);
+    });
+
+
+    app.get('/user/:email', async (req, res) => {
+      const email = req.params.email
+      // console.log(email);
+      const query = { userEmail: email };
+      const result = await recipeCollection.find(query).toArray();
+      res.send(result)
+    })
+  
+
     app.patch('/recipes', async (req, res) => {
       const { id, like_count } = req.body
       const filter = { _id: new ObjectId(id) }
