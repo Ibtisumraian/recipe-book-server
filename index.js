@@ -52,7 +52,6 @@ async function run() {
 
     app.get('/user/:email', async (req, res) => {
       const email = req.params.email
-      // console.log(email);
       const query = { userEmail: email };
       const result = await recipeCollection.find(query).toArray();
       res.send(result)
@@ -69,14 +68,24 @@ async function run() {
       }
       const result = await recipeCollection.updateOne(filter, updatedDoc)
       res.send(result)
-      // console.log(id, like_count);
-      
     })
+
+    app.put('/recipes/:id', async (req, res) => {
+        const id = req.params.id
+        const filter = { _id: new ObjectId(id) }
+        const updatedRecipe = req.body
+        const options = { upsert: true }
+        const updatedDoc = {
+          $set: updatedRecipe
+        }
+        const result = await recipeCollection.updateOne(filter, updatedDoc, options)
+      res.send(result) 
+      // console.log(updatedDoc);
+      })
 
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
-    // await client.close();
   }
 }
 run().catch(console.dir);
