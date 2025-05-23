@@ -80,7 +80,6 @@ async function run() {
         }
         const result = await recipeCollection.updateOne(filter, updatedDoc, options)
       res.send(result) 
-      // console.log(updatedDoc);
     })
     
 
@@ -89,7 +88,6 @@ async function run() {
       const query = { _id: new ObjectId(id) }
       const result = await recipeCollection.deleteOne(query)
       res.send(result)
-      // console.log(id);
       
     })
 
