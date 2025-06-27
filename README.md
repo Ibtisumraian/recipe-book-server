@@ -39,6 +39,8 @@ Handles CRUD operations for recipes and serves as the API for the frontend clien
 | GET    | `/recipes/:id`       | Get a single recipe by ID              |
 | GET    | `/TopRecipes`        | Get top 6 recipes sorted by likes      |
 | GET    | `/user/:email`       | Get all recipes added by a user        |
+| GET    | `/Ascending`         | Get all recipes by less likes          |
+| GET    | `/Descending `       | Get all recipes most likes             |
 | PATCH  | `/recipes`           | Update recipe like count               |
 | PUT    | `/recipes/:id`       | Update recipe details                  |
 | DELETE | `/recipes/:id`       | Delete a recipe by ID                  |
