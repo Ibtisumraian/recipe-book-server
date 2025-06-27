@@ -45,7 +45,20 @@ async function run() {
 
 
     app.get('/TopRecipes', async (req, res) => {
-      const topRecipes = await recipeCollection.find().sort({ like_count: -1 }).limit(6).toArray();
+      const topRecipes = await recipeCollection.find().sort({ like_count: -1 }).limit(8).toArray();
+      res.send(topRecipes);
+    });
+
+
+    app.get('/Ascending', async (req, res) => {
+      const topRecipes = await recipeCollection.find().sort({ like_count: -1 }).toArray();
+      res.send(topRecipes);
+    });
+
+
+
+    app.get('/Descending', async (req, res) => {
+      const topRecipes = await recipeCollection.find().sort({ like_count: 1 }).toArray();
       res.send(topRecipes);
     });
 
