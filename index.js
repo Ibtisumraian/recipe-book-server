@@ -45,7 +45,7 @@ async function run() {
 
 
     app.get('/TopRecipes', async (req, res) => {
-      const topRecipes = await recipeCollection.find().sort({ like_count: -1 }).limit(8).toArray();
+      const topRecipes = await recipeCollection.find().sort({ like_count: 1 }).limit(8).toArray();
       res.send(topRecipes);
     });
 
@@ -106,8 +106,8 @@ async function run() {
 
 
 
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    // await client.db("admin").command({ ping: 1 });
+    // console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
   }
 }

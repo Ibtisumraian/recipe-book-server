@@ -5,6 +5,11 @@ Handles CRUD operations for recipes and serves as the API for the frontend clien
 
 ---
 
+[🌐 View Live client Site](https://recipe-book-bff32.web.app/)
+[🌐 View Live server Site](https://recipe-book-server-six.vercel.app)
+
+---
+
 ## 🚀 Features
 
 - Connects to MongoDB Atlas using environment variables for secure credentials
